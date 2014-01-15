@@ -7,4 +7,4 @@ More Information regarding FRC Team 1923 may be found [here](http://firstrobotic
 ####US FIRST####
 More Information regarding FIRST may be found at [usfirst.org](http://usfirst.org).
 ####WPILib and Javadoc####
-The WPILib Javadoc for 2013 may be found [here](http://lcec.us/javadoc/) and more info. on using the WPILib may be found [here](http://users.wpi.edu/~bamiller/WPILib/WPILib.pdf).
+The WPILib Javadoc for 2013 may be found [here](http://team2168.org/javadoc/) and more info. on using the WPILib may be found [here](http://users.wpi.edu/~bamiller/WPILib/WPILib.pdf).
