@@ -15,7 +15,7 @@ public class PistonActuatorEvent extends Event{
         super(true);
     }
     
-    public void event() {                    //Activates A piston by calling the activate method
+    public void event() {                   //TODO add code here
         
     }
 }
