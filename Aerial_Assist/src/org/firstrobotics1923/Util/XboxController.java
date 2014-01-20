@@ -3,14 +3,18 @@ package org.firstrobotics1923.Util;
 import edu.wpi.first.wpilibj.*;
 
 /**
- * Program for Xbox controller inputs
+ * A program for Xbox controller inputs
+ * 
  * @author Prasanth Yedlapalli, Olu Olorode
+ * @version 1.0
+ * @since 
  */
-public class XboxController extends Joystick {                      //Inherits Joystick class
+public class XboxController extends Joystick {
 
     public XboxController(int port) {
         super(port);
     }
+    
     /**
      * Checks if button is pressed and what button is pressed
      * @param inputButton
@@ -20,6 +24,7 @@ public class XboxController extends Joystick {                      //Inherits J
     public boolean getButton(XboxController.Button inputButton) {
         return this.getRawButton(inputButton.value);
     }
+    
     /**
      * Gets the input of D-Pad
      * @return
@@ -28,6 +33,7 @@ public class XboxController extends Joystick {                      //Inherits J
     public double getDPad() {
         return this.getRawAxis(6);
     }
+    
     /**
      * Gets the input of Triggers
      * @param hand
@@ -43,12 +49,13 @@ public class XboxController extends Joystick {                      //Inherits J
         }
         return false;
     }
+    
     /**
      * Gets the axis of each Analog stick
      * @param stickNumber
-     *                   The left (1) or right (2) trigger
+     *                   The left (1) or right (2) analog stick
      * @param axisNumber
-     *                  The x (1) or right (2) axis
+     *                  The x (1) or y (2) axis
      * @return
      *         The direction of each Analog stick
      */
@@ -69,6 +76,7 @@ public class XboxController extends Joystick {                      //Inherits J
         return this.getRawAxis(fAxis);
 
     }
+    
     /**
      * The value of each button on controller
      */
