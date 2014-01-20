@@ -17,6 +17,6 @@ public class PistonDeactivatorEvent extends Event {
     }
 
     public void event() {
-        Components.samplePneumaticSystem.deactivate(); //retracts piston
+        //retracts piston
     }
 }
