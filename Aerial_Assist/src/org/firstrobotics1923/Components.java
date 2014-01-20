@@ -29,7 +29,7 @@ public class Components {
     public static final Victor rearLeftDrive = new Victor(2);                          //TODO (Update)
     public static final Victor frontRightDrive = new Victor(3);                         //TODO (Update)
     public static final Victor rearRightDrive = new Victor(4);  
-    public static final Victor IntakeMotorDrive = new Victor(5);//TODO (Update)Aryak added
+    public static final Victor IntakeMotorDrive = new Victor(5);                         //TODO (Update)Aryak added
      
     /* Motor Group Init */
     public static final MotorGroup driveLeftSide = new MotorGroup(frontLeftDrive, rearLeftDrive);
