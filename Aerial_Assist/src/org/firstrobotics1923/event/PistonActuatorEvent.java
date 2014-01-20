@@ -5,7 +5,7 @@ import org.firstrobotics1923.Components;
 /**
  * An event that extends a piston... this is a sample piece to aid coders... will be removed
  * 
- * @author Pavan Hegde
+ * @author Pavan Hegde, Aryak Pande
  * @version 1.0
  * @since Jan. 13, 2014
  */
