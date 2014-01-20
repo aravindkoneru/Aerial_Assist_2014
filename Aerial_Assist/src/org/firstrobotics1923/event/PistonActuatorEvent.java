@@ -16,6 +16,6 @@ public class PistonActuatorEvent extends Event{
     }
     
     public void event() {                    //Activates A piston by calling the activate method
-        Components.samplePneumaticSystem.activate();
+        
     }
 }
