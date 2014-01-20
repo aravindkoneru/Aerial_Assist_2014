@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.SpeedController;
  */
 public class IntakeSystem extends PneumaticSystem{
     
-    private Solenoid pistonControllerOne,pistonControllerTwo;
+    private Solenoid pistonControllerOne,pistonControllerTwo; //prepare the varibles
     private SpeedController intakeMotor;
     
     public IntakeSystem(Solenoid pistonControllerOne, Solenoid pistonControllerTwo, SpeedController intakeMotor){        
@@ -27,7 +27,7 @@ public class IntakeSystem extends PneumaticSystem{
     }
     
     public void activate(){       
-        pistonControllerOne.set(false);
+        pistonControllerOne.set(false); //activate pistons
         pistonControllerTwo.set(true);
     }
     
@@ -37,10 +37,10 @@ public class IntakeSystem extends PneumaticSystem{
     
     public void deactivate(){
         pistonControllerOne.set(true);
-        pistonControllerTwo.set(false);
+        pistonControllerTwo.set(false); //deactivate piston
     }
     
-    public void deactivateMotor() {
+    public void deactivateMotor() { //deactivate motor
         this.intakeMotor.set(0.0);
     }
  
