@@ -28,6 +28,7 @@ public class AssistRobot extends IterativeRobot{
     }
     
     public void teleopPeriodic() {
-        
+         Components.robotDrive.drive(Components.leftStick.getCoalescedY(), Components.rightStick.getCoalescedY());
+    
     }
 }
