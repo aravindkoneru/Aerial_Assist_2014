@@ -10,7 +10,7 @@ import org.firstrobotics1923.Components;
  * @version 1.0
  * @since Jan. 14, 2014 
  **/
-public class PistonDeactivatorEvent extends Event {
+public class PistonDeactivatorEvent extends Event { //
 
     public PistonDeactivatorEvent() {
         super(true); //Runs one time only
