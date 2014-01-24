@@ -9,23 +9,12 @@ import edu.wpi.first.wpilibj.Solenoid;
  * @version 1.0
  * @since Jan. 13, 2014
  */
-public class PneumaticSystem implements System{
-    private Solenoid controllerOne, controllerTwo;
+public abstract class PneumaticSystem implements System{ //Overhaul Committed by Pavan
+    private boolean state = false;
     
-    public PneumaticSystem(Solenoid controllerOne, Solenoid controllerTwo) {
-        this.controllerOne = controllerOne;
-        this.controllerTwo = controllerTwo;
-    }
+    public abstract void activate();
     
-    public void activate() {               //Extends Piston
-        controllerOne.set(false);
-        controllerTwo.set(true);
-    }
-    
-    public void deactivate() {             //Retracts Piston
-        controllerOne.set(true);
-        controllerTwo.set(false);
-    }
+    public abstract void deactivate();
     
     public void set(boolean on) {          //Sets system to on or not (activated vs. deactivated)
         if (on) {
@@ -33,6 +22,11 @@ public class PneumaticSystem implements System{
         }else {
             this.deactivate();
         }
+    }
+    
+    public void toggle() {
+        this.set(!state);
+        state = !state;
     }
     
     public void stop() {
