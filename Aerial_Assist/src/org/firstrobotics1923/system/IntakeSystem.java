@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package org.firstrobotics1923.system;
 
 import edu.wpi.first.wpilibj.Solenoid;
@@ -12,40 +6,70 @@ import edu.wpi.first.wpilibj.SpeedController;
 /**
  *System to control the Intake System
  * 
- * @author Aryak Pande , Pavan Hedge
- * @version 0.2
+ * @author Aryak Pande , Pavan Hedge, Kartik Vaidya, Prasanth Yedlapalli, Saikiran Nakka, DJ Wadhwa, Nithin Suresh
+ * @version 1.1
+ * @since Jan 24, 2014
  */
 public class IntakeSystem extends PneumaticSystem{
+    /**
+     * prepare the variables
+     */
+    private final Solenoid pistonControllerOne,pistonControllerTwo; 
+    private final SpeedController intakeMotorController;
     
-    private Solenoid pistonControllerOne,pistonControllerTwo; //prepare the varibles
-    private SpeedController intakeMotor;
-    
-    public IntakeSystem(Solenoid pistonControllerOne, Solenoid pistonControllerTwo, SpeedController intakeMotor){        
+    /**
+     * Creates an IntakeSystem with parameters pistonControllerOne, pistonControllerTwo, and motorController
+     * 
+     * @param pistonControllerOne
+     *                          One of Two Solenoid objects that controls the shooter intake system  
+     * @param pistonControllerTwo
+     *                          One of Two Solenoid objects that controls the shooter intake system 
+     * @param motorController 
+     *                          The motors that turns to spin the ball before releasing it.
+     */
+    public IntakeSystem(Solenoid pistonControllerOne, Solenoid pistonControllerTwo, SpeedController motorController){        
         this.pistonControllerOne = pistonControllerOne;
         this.pistonControllerTwo = pistonControllerTwo;
-        this.intakeMotor = intakeMotor;
+        this.intakeMotorController = motorController;
     }
     
+    /**
+     * Activates intake pistons
+     */
     public void activate(){       
-        pistonControllerOne.set(false); //activate pistons
+        pistonControllerOne.set(false);
         pistonControllerTwo.set(true);
     }
     
+    /**
+     * Activates the Intake Motor
+     */
     public void activateMotor() {
-        this.intakeMotor.set(0.5);  //TODO update value
+        this.intakeMotorController.set(0.5);    //TODO (update) 
     }
     
+    /**
+     * deactivates the piston
+     */
     public void deactivate(){
         pistonControllerOne.set(true);
-        pistonControllerTwo.set(false); //deactivate piston
+        pistonControllerTwo.set(false); 
     }
     
-    public void deactivateMotor() { //deactivate motor
-        this.intakeMotor.set(0.0);
+    /**
+     * deactivates the motor
+     */
+    public void deactivateMotor() { 
+        this.intakeMotorController.set(0.0);
     }
- 
+    
+    /**
+     * This deactivates the Piston and Stops the Motors
+     */
     public void stop(){
-        //TODO    
+        pistonControllerOne.set(false);
+        pistonControllerTwo.set(false);
+        intakeMotorController.set(0.0);
     }
     
 }
