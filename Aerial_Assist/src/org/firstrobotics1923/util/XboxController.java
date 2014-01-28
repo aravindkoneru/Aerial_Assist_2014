@@ -1,4 +1,4 @@
-package org.firstrobotics1923.Util;
+package org.firstrobotics1923.util;
 
 import edu.wpi.first.wpilibj.*;
 
@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.*;
  * 
  * @author Prasanth Yedlapalli, Olu Olorode
  * @version 1.0
- * @since 
+ * @since Jan 26, 2014
  */
 public class XboxController extends Joystick {
 
@@ -18,8 +18,9 @@ public class XboxController extends Joystick {
     /**
      * Checks if button is pressed and what button is pressed
      * @param inputButton
-     *                   The button that is pressed
+     *      The button that is pressed
      * @return
+     *      The state of the button
      */
     public boolean getButton(XboxController.Button inputButton) {
         return this.getRawButton(inputButton.value);

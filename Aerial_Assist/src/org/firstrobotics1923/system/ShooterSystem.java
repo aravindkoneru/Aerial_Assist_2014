@@ -6,7 +6,7 @@ import org.firstrobotics1923.util.MotorGroup;
 /**
  * The Shooter System
  * 
- * @author Kartik Vaidya , Christopher Cushman, Prasanth Yedlapalli, Saikiran Nakka, Kartik Vaidya, DJ Wadhwa, Nithin Suresh
+ * @author Kartik Vaidya, Pavan Hegde 
  * @version 1.4
  * @since Jan 26, 2014 
  *
@@ -16,13 +16,20 @@ public class ShooterSystem implements System {
     private final MotorGroup frontWheels, backWheels;
     private double speed = DefaultConfig.SHOOTER_SPEED;
     
+    /**
+     * Creates a ShooterSystem with A set of front and back wheels
+     * @param backWheels
+     *              The motor group made of the Victors controlling the back wheels
+     * @param frontWheels 
+     *              The motor group made of the Victors controlling the front wheels
+     */
     public ShooterSystem(MotorGroup backWheels, MotorGroup frontWheels) {
        this.backWheels = backWheels;
        this.frontWheels = frontWheels;
     }
     
     /**
-    * Activates Victor at set speed 
+    * Starts Motors at set speed 
     */
     public void activate() {
         frontWheels.set(speed);
@@ -52,7 +59,7 @@ public class ShooterSystem implements System {
     }
     
     /**
-    * Stops the Victor
+    * Stops the Motors on the shooter
     */
     public void stop() {
         frontWheels.disable();

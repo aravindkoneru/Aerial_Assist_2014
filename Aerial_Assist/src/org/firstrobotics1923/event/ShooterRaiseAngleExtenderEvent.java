@@ -8,9 +8,9 @@ import org.firstrobotics1923.Components;
  * @version 1.0
  * @since Jan 24, 2014
  */
-public class ShooterAngleSystemExtenderEvent extends Event {
+public class ShooterRaiseAngleExtenderEvent extends Event {
     
-    public ShooterAngleSystemExtenderEvent(){
+    public ShooterRaiseAngleExtenderEvent(){
         super(true);
     }
     
