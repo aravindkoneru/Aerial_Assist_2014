@@ -11,7 +11,7 @@ import org.firstrobotics1923.event.Event;
  * @since Jan. 25, 2014
  */
 public class EventBus {
-    private static EventBus instance;
+    public static EventBus instance;
     private final Vector eventQueue = new Vector();
     private final Vector running = new Vector();
     
@@ -79,11 +79,11 @@ public class EventBus {
     /**
      * Gets the robot's instance of the event bus.
      * @return the robot's event bus
-     */
+     *
     public static EventBus getInstance(){
         if(instance == null){
             instance = new EventBus();
         }
         return instance;
-    }
+    }*/
 }

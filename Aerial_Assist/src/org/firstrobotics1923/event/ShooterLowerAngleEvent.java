@@ -9,9 +9,9 @@ import org.firstrobotics1923.Components;
  * @version 1.0
  * @since Jan 24, 2014
  */
-public class ShooterAngleSystemRetractorEvent extends Event {
+public class ShooterLowerAngleEvent extends Event {
     
-public ShooterAngleSystemRetractorEvent(){
+public ShooterLowerAngleEvent(){
         super(true);
     }
     

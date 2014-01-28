@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package org.firstrobotics1923.util;
 
 /**
@@ -11,11 +5,15 @@ package org.firstrobotics1923.util;
  * 
  * @author Pavan Hegde
  * @version 1.0
- * @since Jan 20, 2014
+ * @since Jan 26, 2014
  */
 public class DefaultConfig {
    
     public static final double EPSILON = 0.08d;
     
+    public static final double SHOOTER_SPEED = 0.75;
+    public static final double SPEED_INCREMENT = 0.1;
+    
+    public static final double INTAKE_MOTOR_SPEED = 0.5;
     
 }
