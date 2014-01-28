@@ -1,5 +1,6 @@
 package org.firstrobotics1923;
 
+import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Victor;
 import org.firstrobotics1923.util.XboxController;
@@ -29,6 +30,9 @@ public class Components {
     
     public static final Solenoid shooterAngleControllerOne = new Solenoid(1);//TODO (Update)
     public static final Solenoid shooterAngleControllerTwo = new Solenoid(2);
+    
+    /* Relays (Spikes)*/
+    public static final Relay compressorSpike = new Relay(1); 
     
     /* Speed controllers */
     public static final Victor frontLeftDrive = new Victor(1);                         //TODO (Update)
