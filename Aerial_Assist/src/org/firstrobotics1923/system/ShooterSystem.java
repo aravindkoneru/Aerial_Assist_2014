@@ -1,7 +1,7 @@
 package org.firstrobotics1923.system;
 
 import org.firstrobotics1923.util.DefaultConfig;
-import org.firstrobotics1923.util.MotorGroup;
+import org.firstrobotics1923.util.ShooterMotorGroup;
 
 /**
  * The Shooter System
@@ -13,7 +13,7 @@ import org.firstrobotics1923.util.MotorGroup;
  */
 public class ShooterSystem implements System {
 
-    private final MotorGroup frontWheels, backWheels;
+    private final ShooterMotorGroup frontWheels, backWheels;
     private double speed = DefaultConfig.SHOOTER_SPEED;
     
     /**
@@ -23,7 +23,7 @@ public class ShooterSystem implements System {
      * @param frontWheels 
      *              The motor group made of the Victors controlling the front wheels
      */
-    public ShooterSystem(MotorGroup backWheels, MotorGroup frontWheels) {
+    public ShooterSystem(ShooterMotorGroup backWheels, ShooterMotorGroup frontWheels) {
        this.backWheels = backWheels;
        this.frontWheels = frontWheels;
     }

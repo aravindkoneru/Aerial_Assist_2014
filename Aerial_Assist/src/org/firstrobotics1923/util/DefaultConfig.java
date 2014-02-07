@@ -11,7 +11,7 @@ public class DefaultConfig {
    
     public static final double EPSILON = 0.08d;
     
-    public static final double SHOOTER_SPEED = 0.75;
+    public static final double SHOOTER_SPEED = 0.9;
     public static final double SPEED_INCREMENT = 0.1;
     
     public static final double INTAKE_MOTOR_SPEED = 0.5;

@@ -1,6 +1,12 @@
 package org.firstrobotics1923;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import org.firstrobotics1923.event.IntakeAngleInEvent;
+import org.firstrobotics1923.event.IntakeAngleOutEvent;
+import org.firstrobotics1923.event.IntakeMotorOffEvent;
+import org.firstrobotics1923.event.IntakeMotorOnEvent;
+import org.firstrobotics1923.event.ShooterLowerAngleEvent;
+import org.firstrobotics1923.event.ShooterRaiseAngleEvent;
 import org.firstrobotics1923.util.XboxController;
 import org.firstrobotics1923.event.ShooterSpeedDownEvent;
 import org.firstrobotics1923.event.ShooterSpeedUpEvent;
@@ -95,6 +101,57 @@ public class AssistRobot extends IterativeRobot{
            }
         } //End Shooter Scope
         
+        { // Shooter Angle Scope
+           if (xbc.getTrigger(-1) & !triggers[0]) {         //Left Trigger lowers the shooter angle
+               EventBus.instance.push(new ShooterLowerAngleEvent());
+               triggers[0] = true;
+           } else {
+               triggers[0] = false;
+           } 
+           
+           if (xbc.getTrigger(1) & !triggers[1]) {         //Right Trigger raises the shooter angle
+               EventBus.instance.push(new ShooterRaiseAngleEvent());
+               triggers[1] = true;
+           } else {
+               triggers[1] = false;
+           }
+        } // End Shooter Angle Scope
+        
+        { //Intake Scope
+           if (xbc.getButton(XboxController.Button.B) & !justPressed[XboxController.Button.B.value]) {         //B angles intake in
+               EventBus.instance.push(new IntakeAngleInEvent());
+               justPressed[XboxController.Button.B.value] = true;
+           } else {
+               justPressed[XboxController.Button.B.value] = false;
+           }
+           
+           if (xbc.getButton(XboxController.Button.X) & !justPressed[XboxController.Button.X.value]) {         //X angles intake out
+               EventBus.instance.push(new IntakeAngleOutEvent());
+               justPressed[XboxController.Button.X.value] = true;
+           } else {
+               justPressed[XboxController.Button.X.value] = false;
+           }
+           
+           if (xbc.getButton(XboxController.Button.A) & !justPressed[XboxController.Button.A.value]) {         //A turns on the intake motor
+               EventBus.instance.push(new IntakeMotorOnEvent());
+               justPressed[XboxController.Button.A.value] = true;
+           } else {
+               justPressed[XboxController.Button.A.value] = false;
+           }
+           
+           if (xbc.getButton(XboxController.Button.Y) & !justPressed[XboxController.Button.Y.value]) {         //Y turns off the intake motor
+               EventBus.instance.push(new IntakeMotorOffEvent());
+               justPressed[XboxController.Button.Y.value] = true;
+           } else {
+               justPressed[XboxController.Button.Y.value] = false;
+           }
+        } //End Intake Scope
+        
+        { //Compressor Scope
+            if (false) {
+                //TODO Compressor on if presssure is low
+            }
+        } //End Compressor Scope
         { //Event Bus Scope
             EventBus.instance.next();
             EventBus.instance.clean();
