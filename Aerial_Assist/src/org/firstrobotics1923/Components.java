@@ -9,6 +9,7 @@ import org.firstrobotics1923.system.IntakeSystem;
 import org.firstrobotics1923.system.ShooterAngleSystem;
 import org.firstrobotics1923.system.ShooterSystem;
 import org.firstrobotics1923.util.MotorGroup;
+import org.firstrobotics1923.util.ShooterMotorGroup;
 import org.firstrobotics1923.util.StickShift;
 
 /**
@@ -32,27 +33,29 @@ public class Components {
     public static final Solenoid shooterAngleControllerTwo = new Solenoid(2);
     
     /* Relays (Spikes)*/
-    public static final Relay compressorSpike = new Relay(1); 
+    public static final Relay compressorSpike = new Relay(1);               //TODO Update
     
     /* Speed controllers */
     public static final Victor frontLeftDrive = new Victor(1);                         //TODO (Update)
     public static final Victor frontRightDrive = new Victor(2);                         //TODO (Update)
     public static final Victor rearLeftDrive = new Victor(3);                          //TODO (Update)
     public static final Victor rearRightDrive = new Victor(4);  
+    public static final Victor centerLeftDrive = new Victor(5);
+    public static final Victor centerRightDrive = new Victor(6);
     
-    public static final Victor shooterFrontLeft = new Victor(5);
-    public static final Victor shooterBackLeft = new Victor(6);
-    public static final Victor shooterFrontRight = new Victor(7);
-    public static final Victor shooterBackRight = new Victor(8);
+    public static final Victor shooterFrontLeft = new Victor(7);
+    public static final Victor shooterBackLeft = new Victor(8);
+    public static final Victor shooterFrontRight = new Victor(9);
+    public static final Victor shooterBackRight = new Victor(10);
     
-    public static final Victor intakeMotorController = new Victor(10);                         //TODO (Update)
+    public static final Victor intakeMotorController = new Victor(11);                         //TODO (Update)
     
     /* Motor Group Init */
-    public static final MotorGroup driveLeftSide = new MotorGroup(frontLeftDrive, rearLeftDrive);
-    public static final MotorGroup driveRightSide = new MotorGroup(frontRightDrive, rearRightDrive);
+    public static final MotorGroup driveLeftSide = new MotorGroup(frontLeftDrive, centerLeftDrive, rearLeftDrive);
+    public static final MotorGroup driveRightSide = new MotorGroup(frontRightDrive, centerRightDrive, rearRightDrive);
     
-    public static final MotorGroup shooterFrontWheels = new MotorGroup(shooterFrontLeft, shooterFrontRight);
-    public static final MotorGroup shooterBackWheels = new MotorGroup(shooterBackLeft, shooterBackRight);
+    public static final ShooterMotorGroup shooterFrontWheels = new ShooterMotorGroup(shooterFrontLeft, shooterFrontRight);
+    public static final ShooterMotorGroup shooterBackWheels = new ShooterMotorGroup(shooterBackLeft, shooterBackRight);
     
     /* System Init */
     public static final IntakeSystem intakeSystem = new IntakeSystem(intakeAngleControllerOne,intakeAngleControllerTwo,intakeMotorController); 
