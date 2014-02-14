@@ -22,6 +22,6 @@ public class ShooterSpeedDownEvent extends Event {
      * Decreases the Speed of the shooter wheels
      */
     public void event() {
-        Components.shooterSystem.decreaseSpeed();
+       Components.shooterSystem.decreaseSpeed();
     }
 }

@@ -7,11 +7,11 @@ import org.firstrobotics1923.event.IntakeMotorOffEvent;
 import org.firstrobotics1923.event.IntakeMotorOnEvent;
 import org.firstrobotics1923.event.ShooterLowerAngleEvent;
 import org.firstrobotics1923.event.ShooterRaiseAngleEvent;
-import org.firstrobotics1923.util.XboxController;
 import org.firstrobotics1923.event.ShooterSpeedDownEvent;
 import org.firstrobotics1923.event.ShooterSpeedUpEvent;
 import org.firstrobotics1923.event.ShooterStartEvent;
 import org.firstrobotics1923.event.ShooterStopEvent;
+import org.firstrobotics1923.util.XboxController;
 
 /**
  * The Core Code for FRC Team 1923's "Aerial Assist" Robot 
@@ -24,18 +24,23 @@ public class AssistRobot extends IterativeRobot{
     
     private XboxController xbc = Components.operatorControl;
     
-    private boolean []justPressed = new boolean[14];       //Array to store Xbox button input
-    private boolean []triggers = new boolean[2];           //Array to store Xbox Trigger input
+    private boolean[] justPressed = new boolean[14];       //Array to store Xbox button input
+    private boolean[] triggers = new boolean[2]; //Array to store Xbox trigger input
+        
+    public void robotInit(){
+        //Components.rightDriveEncoder.setDistancePerPulse(256); //TODO: update
+        //Components.leftDriveEncoder.setDistancePerPulse(256); //TODO: update
+    }
     
     /**
      * Ensures that all systems are disabled
      */
     public void disabledInit() {
         Components.shooterSystem.stop();
-        Components.shooterAngleSystem.stop();
-        Components.robotDrive.stop();
-        Components.intakeSystem.stop();
-        EventBus.instance.clear();
+        //Components.shooterAngleSystem.stop();
+        //Components.robotDrive.stop();
+        //Components.intakeSystem.stop();
+       // EventBus.instance.clear();
     }
     
     public void disabledPeriodic() {
@@ -64,36 +69,38 @@ public class AssistRobot extends IterativeRobot{
     }
     
     /**
-     * Al of the periodically called teleop-functions (eg. input)
+     * All of the periodically called teleop-functions (eg. input)
      */
     public void teleopPeriodic() {
+        
         { //Driving Scope
-            Components.robotDrive.drive(Components.leftStick.getCoalescedY(), Components.rightStick.getCoalescedY());
+           Components.robotDrive.drive(Components.leftStick.getCoalescedY(), Components.rightStick.getCoalescedY());
+           System.out.println("Left: " + Components.leftStick.getCoalescedY() + " Right: " + Components.rightStick.getCoalescedY());
         } //End Driving Scope
         
         {  //Shooter Scope
-           if (xbc.getButton(XboxController.Button.Start) & !justPressed[XboxController.Button.Start.value]) {    //Start button turns on shooter
+           if (Components.operatorControl.getButton(XboxController.Button.Start) & !justPressed[XboxController.Button.Start.value]) {    //Start button turns on shooter
                EventBus.instance.push(new ShooterStartEvent());
                justPressed[XboxController.Button.Start.value] = true;
            } else {
                justPressed[XboxController.Button.Start.value] = false;
            }
            
-           if (xbc.getButton(XboxController.Button.Back) & !justPressed[XboxController.Button.Back.value]) {     //Back Button stops the shooter
+           if (Components.operatorControl.getButton(XboxController.Button.Back) & !justPressed[XboxController.Button.Back.value]) {     //Back Button stops the shooter
                EventBus.instance.push(new ShooterStopEvent());
                justPressed[XboxController.Button.Back.value] = false;
            } else {
                justPressed[XboxController.Button.Back.value] = false;
            }
            
-           if (xbc.getButton(XboxController.Button.LB) & !justPressed[XboxController.Button.LB.value]) {         //Left Bumper Slows down the shooter
+           if (Components.operatorControl.getButton(XboxController.Button.LB) & !justPressed[XboxController.Button.LB.value]) {         //Left Bumper Slows down the shooter
                EventBus.instance.push(new ShooterSpeedDownEvent());
                justPressed[XboxController.Button.LB.value] = true;
            } else {
                justPressed[XboxController.Button.LB.value] = false;
            }
            
-           if (xbc.getButton(XboxController.Button.RB) & !justPressed[XboxController.Button.RB.value]) {         //Right Bumper speeds up the shooter
+           if (Components.operatorControl.getButton(XboxController.Button.RB) & !justPressed[XboxController.Button.RB.value]) {         //Right Bumper speeds up the shooter
                EventBus.instance.push(new ShooterSpeedUpEvent());
                justPressed[XboxController.Button.RB.value] = true;
            } else {
@@ -102,14 +109,14 @@ public class AssistRobot extends IterativeRobot{
         } //End Shooter Scope
         
         { // Shooter Angle Scope
-           if (xbc.getTrigger(-1) & !triggers[0]) {         //Left Trigger lowers the shooter angle
+           if (Components.operatorControl.getTrigger(-1) & !triggers[0]) {         //Left Trigger lowers the shooter angle
                EventBus.instance.push(new ShooterLowerAngleEvent());
                triggers[0] = true;
            } else {
                triggers[0] = false;
            } 
            
-           if (xbc.getTrigger(1) & !triggers[1]) {         //Right Trigger raises the shooter angle
+           if (Components.operatorControl.getTrigger(1) & !triggers[1]) {         //Right Trigger raises the shooter angle
                EventBus.instance.push(new ShooterRaiseAngleEvent());
                triggers[1] = true;
            } else {
@@ -118,28 +125,28 @@ public class AssistRobot extends IterativeRobot{
         } // End Shooter Angle Scope
         
         { //Intake Scope
-           if (xbc.getButton(XboxController.Button.B) & !justPressed[XboxController.Button.B.value]) {         //B angles intake in
+           if (Components.operatorControl.getButton(XboxController.Button.B) & !justPressed[XboxController.Button.B.value]) {         //B angles intake in
                EventBus.instance.push(new IntakeAngleInEvent());
                justPressed[XboxController.Button.B.value] = true;
            } else {
                justPressed[XboxController.Button.B.value] = false;
            }
            
-           if (xbc.getButton(XboxController.Button.X) & !justPressed[XboxController.Button.X.value]) {         //X angles intake out
+           if (Components.operatorControl.getButton(XboxController.Button.X) & !justPressed[XboxController.Button.X.value]) {         //X angles intake out
                EventBus.instance.push(new IntakeAngleOutEvent());
                justPressed[XboxController.Button.X.value] = true;
            } else {
                justPressed[XboxController.Button.X.value] = false;
            }
            
-           if (xbc.getButton(XboxController.Button.A) & !justPressed[XboxController.Button.A.value]) {         //A turns on the intake motor
+           if (Components.operatorControl.getButton(XboxController.Button.A) & !justPressed[XboxController.Button.A.value]) {         //A turns on the intake motor
                EventBus.instance.push(new IntakeMotorOnEvent());
                justPressed[XboxController.Button.A.value] = true;
            } else {
                justPressed[XboxController.Button.A.value] = false;
            }
            
-           if (xbc.getButton(XboxController.Button.Y) & !justPressed[XboxController.Button.Y.value]) {         //Y turns off the intake motor
+           if (Components.operatorControl.getButton(XboxController.Button.Y) & !justPressed[XboxController.Button.Y.value]) {         //Y turns off the intake motor
                EventBus.instance.push(new IntakeMotorOffEvent());
                justPressed[XboxController.Button.Y.value] = true;
            } else {
@@ -152,9 +159,10 @@ public class AssistRobot extends IterativeRobot{
                 //TODO Compressor on if presssure is low
             }
         } //End Compressor Scope
+  
         { //Event Bus Scope
-            EventBus.instance.next();
-            EventBus.instance.clean();
-        }
+            //EventBus.instance.next();
+            //EventBus.instance.clean();
+        } //End EvntBus Scope
     }
 }

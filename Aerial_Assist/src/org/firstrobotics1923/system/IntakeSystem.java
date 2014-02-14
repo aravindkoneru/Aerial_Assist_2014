@@ -1,5 +1,6 @@
 package org.firstrobotics1923.system;
 
+import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedController;
 import org.firstrobotics1923.util.DefaultConfig;
@@ -14,7 +15,7 @@ import org.firstrobotics1923.util.DefaultConfig;
 public class IntakeSystem extends PneumaticSystem {
  
     private final Solenoid pistonControllerOne,pistonControllerTwo; 
-    private final SpeedController intakeMotorController;
+    private final Relay intakeMotorController;
     
     /**
      * Creates an IntakeSystem with parameters pistonControllerOne, pistonControllerTwo, and motorController
@@ -23,13 +24,13 @@ public class IntakeSystem extends PneumaticSystem {
      *                          One of Two Solenoid objects that controls the shooter intake angle  
      * @param pistonControllerTwo
      *                          One of Two Solenoid objects that controls the shooter intake angle 
-     * @param motorController 
-     *                          The speed controller which controls the motors on the intake system
+     * @param intakeSpike 
+     *                          The Spike which controls the motors on the intake system
      */
-    public IntakeSystem(Solenoid pistonControllerOne, Solenoid pistonControllerTwo, SpeedController motorController){        
+    public IntakeSystem(Solenoid pistonControllerOne, Solenoid pistonControllerTwo, Relay intakeSpike){        
         this.pistonControllerOne = pistonControllerOne;
         this.pistonControllerTwo = pistonControllerTwo;
-        this.intakeMotorController = motorController;
+        this.intakeMotorController = intakeSpike;
     }
     
     /**
@@ -44,7 +45,7 @@ public class IntakeSystem extends PneumaticSystem {
      * Starts the motors on the Intake system
      */
     public void activateMotor() {
-        this.intakeMotorController.set(DefaultConfig.INTAKE_MOTOR_SPEED);     
+        this.intakeMotorController.set(Relay.Value.kOn);     
     }
     
     /**
@@ -59,7 +60,7 @@ public class IntakeSystem extends PneumaticSystem {
      * Turns off the motor
      */
     public void deactivateMotor() { 
-        this.intakeMotorController.set(0.0);
+        this.intakeMotorController.set(Relay.Value.kOff);
     }
     
     /**
@@ -68,6 +69,6 @@ public class IntakeSystem extends PneumaticSystem {
     public void stop(){
         pistonControllerOne.set(true);
         pistonControllerTwo.set(false);
-        intakeMotorController.set(0.0);
+        intakeMotorController.set(Relay.Value.kOff);
     }
 }

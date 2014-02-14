@@ -11,7 +11,7 @@ import java.util.Vector;
  * @since Jan 20, 2014
  */
 public class MotorGroup implements SpeedController{
-    private Vector motors;               //A Vecotr to store all of the speed controllers
+    private Vector motors = new Vector();               //A Vector to store all of the speed controllers
     
     /**
      * Constructor to create a MotorGroup of 1 motor

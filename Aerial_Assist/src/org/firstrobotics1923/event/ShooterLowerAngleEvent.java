@@ -19,6 +19,6 @@ public ShooterLowerAngleEvent(){
      * Constructor that deactivates shooterAngleSystem
      */
     public void event() {
-    Components.shooterAngleSystem.deactivate();
-}
+      Components.shooterAngleSystem.deactivate();
+    }
 }

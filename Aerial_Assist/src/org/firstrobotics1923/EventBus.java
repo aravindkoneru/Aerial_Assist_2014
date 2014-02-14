@@ -76,14 +76,14 @@ public class EventBus {
         this.eventQueue.removeAllElements();
     }
     
-    /**
+    /*
      * Gets the robot's instance of the event bus.
      * @return the robot's event bus
-     *
+     */
     public static EventBus getInstance(){
         if(instance == null){
             instance = new EventBus();
         }
         return instance;
-    }*/
+    }
 }

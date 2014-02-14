@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package org.firstrobotics1923.util;
 
 import edu.wpi.first.wpilibj.SpeedController;
@@ -19,7 +13,7 @@ import java.util.Vector;
  * @since Feb 6, 2014
  */
 public class ShooterMotorGroup implements SpeedController {
-    private Vector motors;
+    private Vector motors = new Vector();
     
     public ShooterMotorGroup(SpeedController rightSide, SpeedController leftSide) {
         if (rightSide != null) {

@@ -50,7 +50,7 @@ public class StickShift extends Joystick{
      * @return the coalesced Y-value
      */
     public double getCoalescedY() {
-        return this.yCoalascor.coalesce(this.getZ());
+        return this.yCoalascor.coalesce(this.getY());
     }
     
     /**
