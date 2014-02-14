@@ -31,7 +31,7 @@ public abstract class Event implements Runnable{
      * Starts the Event
      */
     public void start() {
-        this.run = true;
+        this.run = false; //@todo
         new Thread().start();
     }
     
@@ -51,6 +51,7 @@ public abstract class Event implements Runnable{
      */
     public void stop() {
         this.run = false;
+        
     }
     
     /**

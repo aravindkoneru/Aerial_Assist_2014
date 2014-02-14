@@ -2,6 +2,7 @@ package org.firstrobotics1923.system;
 
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
+import org.firstrobotics1923.Components;
 import org.firstrobotics1923.util.MotorGroup;
 
 /**
@@ -23,15 +24,46 @@ public class DriveSystem extends RobotDrive{
     
     public void drive(double leftMag, double rightMag) {
         this.tankDrive(leftMag, rightMag);
+        //Components.rightDriveEncoder.start();
     }
     
     public void setSafety(boolean enabled) {
         this.setSafetyEnabled(enabled);
     }
     
-    public void stop() {
-        this.stop();
-        this.stopMotor();
+    /*public boolean getRightEncoderDirection() {
+        return Components.rightDriveEncoder.getDirection();
     }
+    
+    public boolean getLeftEncoderDirection() {
+        return Components.leftDriveEncoder.getDirection();
+    }
+    
+    public double getRightEncoderDistance() {
+        return Components.rightDriveEncoder.getDistance();
+    }
+    
+    public double getLeftEncoderDistance() {
+        return Components.leftDriveEncoder.getDistance();
+    }
+    
+    public double getRightEncoderRate() {
+        return Components.rightDriveEncoder.getRate();
+    }
+    
+    public double getLeftEncoderRate() {
+        return Components.leftDriveEncoder.getRate();
+    }
+    
+    public void resetEncoders() {
+        Components.rightDriveEncoder.reset();
+        Components.leftDriveEncoder.reset();
+    }*/
+    
+    public void stop() {
+        super.stopMotor();
+        //Components.rightDriveEncoder.stop();
+        //Components.leftDriveEncoder.stop();
+    }   
 }
 

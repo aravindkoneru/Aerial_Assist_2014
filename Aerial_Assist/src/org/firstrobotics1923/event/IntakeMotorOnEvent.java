@@ -1,5 +1,6 @@
 package org.firstrobotics1923.event;
 
+import edu.wpi.first.wpilibj.Relay;
 import org.firstrobotics1923.Components;
 
 /**
@@ -22,6 +23,7 @@ public class IntakeMotorOnEvent extends Event{
      * Turns on the motor on the intake system
      */
     public void event() {
-        Components.intakeSystem.activateMotor();
+       // Components.intakeSystem.activateMotor();
+        Components.intakeMotor.set(Relay.Value.kOn);
     }
 }
